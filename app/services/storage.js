@@ -6,6 +6,8 @@ export default Ember.Service.extend({
   USER_KEY: 'PB_USER',
   ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
   TOS_ACCEPTED_KEY: 'PB_TOS_ACCEPTED',
+  USE_NIGHT_THEME_KEY: 'PB_USE_NIGHT_THEME',
+  LOCALE_KEY: 'PB_LOCALE',
 
   getUserId() {
     const user = this.getUser()
@@ -25,6 +27,14 @@ export default Ember.Service.extend({
   saveTermsAcceptance() { this._save(this.TOS_ACCEPTED_KEY, true) },
 
   termsAreAccepted() { return this._get(this.TOS_ACCEPTED_KEY) },
+
+  getUseNightTheme() { return this._get(this.USE_NIGHT_THEME_KEY) },
+
+  toggleNightTheme() { this._save(this.USE_NIGHT_THEME_KEY, !this.getUseNightTheme()) },
+
+  getLocale() { return this._get(this.LOCALE_KEY); },
+
+  saveLocale(locale) { this._save(this.LOCALE_KEY, locale) },
 
   clear() { localStorage.clear() },
 

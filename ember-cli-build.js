@@ -59,6 +59,15 @@ module.exports = function (defaults) {
     destDir: '/media/'
   });
 
+  const blocklyLocales = new Funnel('node_modules/blockly-package', {
+    srcDir: '/',
+    include: [
+      'es.js',
+      'en.js'
+    ],
+    destDir: '/assets/locales'
+  });
+
   const procedsBlockly = new Funnel('node_modules/proceds-blockly', {
     srcDir: '/',
     include: ['proceds-blockly-original.js', 'proceds-blockly.js'],
@@ -112,6 +121,7 @@ module.exports = function (defaults) {
     app.toTree(),
     blocklyPackage,
     blocklyMedia,
+    blocklyLocales,
     procedsBlockly,
     uuid,
     clientJS,

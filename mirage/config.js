@@ -22,6 +22,7 @@ export default function() {
   // this.namespace = '';    // make this `api`, for example, if your API is namespaced
   this.timing = 50;      // delay for each request, automatically set to 0 during testing
 
+  this.passthrough('assets/locales/**');
   this.passthrough('http://www.google-analytics.com/**');
   this.passthrough('https://api.github.com/**');
   this.passthrough(`${config.pbApi.baseURL}/**`);

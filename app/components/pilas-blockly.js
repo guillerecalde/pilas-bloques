@@ -28,6 +28,7 @@ export default Component.extend({
   availableBlocksValidator: service(),
   pilasBloquesApi: service(),
   pilasMulang: service(),
+  locale: service('locale'),
 
   bloques: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
@@ -116,6 +117,10 @@ export default Component.extend({
 
     $(window).trigger('resize');
   },
+
+  onLocaleChanged: this.locale.on('localeChanged', function(locale) {
+    console.log('Load language file here', locale);
+  }),
 
   /**
    * Genera el toolbox como lista de categorias con bloques a partir
